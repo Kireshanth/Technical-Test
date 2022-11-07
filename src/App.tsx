@@ -1,22 +1,77 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import FilterAge from './components/FilterAge';
+import Header from './components/Header';
+import { StyledContainer, StyledContainer1, StyledContainer2 } from './components/styles/Container.styled';
+import GlobalStyles from './components/styles/Global'
+import UserList from './components/UserList';
 
 const API_URL = 'http://localhost:8099'
 
 function App() {
+
+  interface User {
+    age: number,
+    country: string,
+    email: string,
+    name: {
+      firstName: string,
+      lastName: string,
+    }
+  }
+
+  const [users, setUsers] = useState<User[]>([]);
+
+  async function getUsers(){
+    let userList = [];
+    const response1 = await fetch(`${API_URL}/users/kids`)
+    const kids = await response1.json();
+    const response2 = await fetch(`${API_URL}/users/adults`)
+    const adults = await response2.json();
+    const response3 = await fetch(`${API_URL}/users/seniors`)
+    const seniors = await response3.json();
+    userList.push(...kids.data, ...adults.data, ...seniors)
+    userList = sortUsers(userList);
+    setUsers(userList);
+    console.log(userList)
+  }
+
+  function sortUsers(arr: User[]){
+    return arr.sort((a, b) => {
+      const firstNameCheck = a.name.firstName.localeCompare(b.name.firstName);
+      if(firstNameCheck == 0){
+        const lastNameCheck = a.name.lastName.localeCompare(b.name.lastName);
+          if(lastNameCheck == 0){
+            return b.age - a.age;
+          } 
+          else {
+            return lastNameCheck;
+          }
+      }
+      else{
+        return firstNameCheck;
+      }
+    })
+  }
+
+  useEffect(()=>{
+    getUsers();
+  }, [])
+
   return (
-    <div className="App">
-      <h1>Planned Test</h1>
-      <div>
-        <button type="button">Retrieve Users</button>
-      </div>
-      <div>
-        <h2>Users</h2>
-        min: <input name="minAge" value="0" type="number" />
-        max: <input name="maxAge" value="100" type="number" />
-        <button type="button">Filter by age</button>
-      </div>
-    </div>
+    <>
+      <GlobalStyles />
+        <Header />
+        <StyledContainer>
+          <StyledContainer1>
+          <h1>Users</h1>
+          </StyledContainer1>
+          <StyledContainer2>
+            <FilterAge />
+            <UserList users={users}/>
+          </StyledContainer2>
+        </StyledContainer>
+    </>
   );
 }
 
