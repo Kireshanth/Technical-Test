@@ -17,7 +17,7 @@ export const Container = styled.div`
         font-size: 1em;
         width: 70%;
       }
-      
+    
     label {
         font-size: 1em;
         color: rgba(100, 100, 111, 0.4);

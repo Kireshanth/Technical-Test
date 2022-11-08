@@ -5,11 +5,15 @@ import { StyledUser } from "./styles/UserList.styled";
 const User = ( {firstName, lastName, age} ) => {
     return ( 
         <StyledUser>
-            <div>
-                <input type="checkbox"></input>
-                <p>{firstName} {lastName}</p>
+            <td>
+                <div class="checkbox">
+                    <input type="checkbox"></input>
+                    <p>{firstName} {lastName}</p>
+                </div>
+            </td>
+            <td>
                 <p>{age}</p>
-            </div>
+            </td>
         </StyledUser>
      );
 }

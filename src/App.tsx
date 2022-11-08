@@ -21,6 +21,8 @@ function App() {
   }
 
   const [users, setUsers] = useState<User[]>([]);
+  const [minAge, setMinAge] = useState<number>(0);
+  const [maxAge, setMaxAge] = useState<number>(100);
 
   async function getUsers(){
     let userList = [];
@@ -31,10 +33,14 @@ function App() {
     const response3 = await fetch(`${API_URL}/users/seniors`)
     const seniors = await response3.json();
     userList.push(...kids.data, ...adults.data, ...seniors)
+    /* userList = filterUsers(userList, min, max); */
     userList = sortUsers(userList);
     setUsers(userList);
-    console.log(userList)
   }
+
+/*   function filterUsers(arr: User[], min: number, max: number){
+    return arr.filter(user => user.age >= min && user.age <= max);
+  } */
 
   function sortUsers(arr: User[]){
     return arr.sort((a, b) => {
@@ -54,21 +60,17 @@ function App() {
     })
   }
 
-  useEffect(()=>{
-    getUsers();
-  }, [])
-
   return (
     <>
       <GlobalStyles />
         <Header />
         <StyledContainer>
           <StyledContainer1>
-          <h1>Users</h1>
+            <h1>Users</h1>
           </StyledContainer1>
           <StyledContainer2>
-            <FilterAge />
-            <UserList users={users}/>
+            <FilterAge getUsers={getUsers} setMinAge={setMinAge} setMaxAge={setMaxAge}/>
+            <UserList users={users} minAge={minAge} maxAge={maxAge}/>
           </StyledContainer2>
         </StyledContainer>
     </>
