@@ -23,6 +23,7 @@ function App() {
   const [minAge, setMinAge] = useState<number>(0);
   const [maxAge, setMaxAge] = useState<number>(100);
 
+  //Retrieve users from the 3 endpoints when clicking the "Retrieve Users" button
   async function getUsers(): Promise<void>{
     let userList = [];
     const response1 = await fetch(`${API_URL}/users/kids`)
@@ -36,7 +37,7 @@ function App() {
     setUsers(userList);
   }
 
-
+  //Order the users from the 3 collections by name ascending followed by the age descending
   function sortUsers(arr: User[]): User[]{
     return arr.sort((a, b) => {
       const firstNameCheck = a.name.firstName.localeCompare(b.name.firstName);

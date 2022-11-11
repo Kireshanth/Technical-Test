@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const StyledUserList = styled.div`
     width: 100%;
     max-width: 900px;
@@ -72,10 +71,6 @@ export const StyledUser = styled.tr`
         border: none;
     }
 
-    .checkbox {
-        display: inline-flex;
-        align-items: center;
-    }
     input { 
         margin-right: 1em;
     }

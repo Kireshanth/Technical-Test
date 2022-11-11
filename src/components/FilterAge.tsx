@@ -10,6 +10,7 @@ interface FilterUsers {
 
 const FilterAge = ( {getUsers, setMinAge, setMaxAge}: FilterUsers ) => {
     
+    //Implement a filter for the age based on the min and max values of the inputs
     const updateAge = (e: any) => {
         if(e.target.name == "minAge"){
             if(e.target.value == ""){
@@ -41,7 +42,7 @@ const FilterAge = ( {getUsers, setMinAge, setMaxAge}: FilterUsers ) => {
                 </div>
             </div>
             <div>
-                <StyledButton type="button" onClick={()=> getUsers()} >Retrieve Users</StyledButton>
+                <StyledButton type="button" onClick={()=> getUsers()}>Retrieve Users</StyledButton>
             </div>
             </Container>
        </>
