@@ -18,7 +18,7 @@ const FilterAge = ( {getUsers, setMinAge, setMaxAge}: FilterUsers ) => {
             } else if(parseInt(e.target.value) >= 0){
                 setMinAge(e.target.value)
             }
-        } 
+        }
         else {
             if(e.target.value == ""){
                 setMaxAge(100)

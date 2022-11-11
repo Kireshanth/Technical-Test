@@ -11,6 +11,10 @@ export const Container = styled.div`
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     margin-right: 2em;
 
+    @media (max-width: 1024px) {
+        margin-bottom: 2em;
+    }
+
     input {
         outline: none;
         border: none;

@@ -21,4 +21,7 @@ export const StyledContainer2 = styled.div`
     flex-direction: row;
     justify-content: center;
     width: 80%;
+    @media (max-width: 1024px) {
+        flex-direction: column;
+    }
 `
