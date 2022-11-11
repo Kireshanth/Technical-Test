@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
 import FilterAge from './components/FilterAge';
 import Header from './components/Header';
 import { StyledContainer, StyledContainer1, StyledContainer2 } from './components/styles/Container.styled';
@@ -24,7 +23,7 @@ function App() {
   const [minAge, setMinAge] = useState<number>(0);
   const [maxAge, setMaxAge] = useState<number>(100);
 
-  async function getUsers(){
+  async function getUsers(): Promise<void>{
     let userList = [];
     const response1 = await fetch(`${API_URL}/users/kids`)
     const kids = await response1.json();
@@ -33,16 +32,12 @@ function App() {
     const response3 = await fetch(`${API_URL}/users/seniors`)
     const seniors = await response3.json();
     userList.push(...kids.data, ...adults.data, ...seniors)
-    /* userList = filterUsers(userList, min, max); */
     userList = sortUsers(userList);
     setUsers(userList);
   }
 
-/*   function filterUsers(arr: User[], min: number, max: number){
-    return arr.filter(user => user.age >= min && user.age <= max);
-  } */
 
-  function sortUsers(arr: User[]){
+  function sortUsers(arr: User[]): User[]{
     return arr.sort((a, b) => {
       const firstNameCheck = a.name.firstName.localeCompare(b.name.firstName);
       if(firstNameCheck == 0){

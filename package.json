@@ -12,10 +12,12 @@
     "start:server": "node server/server.js"
   },
   "dependencies": {
+    "bootstrap": "^5.2.2",
     "faker": "^4.1.0",
     "fastify": "^2.14.1",
     "fastify-cors": "^3.0.3",
     "react": "^16.13.1",
+    "react-bootstrap": "^2.6.0",
     "react-dom": "^16.13.1",
     "react-icons": "^4.6.0",
     "react-scripts": "3.4.1",

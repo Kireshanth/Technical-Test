@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {Button} from 'react-bootstrap';
 
 export const Container = styled.div`
     width: 450px;
@@ -16,22 +17,12 @@ export const Container = styled.div`
         line-height: 1.2em;
         font-size: 1em;
         width: 70%;
-      }
+    }
     
     label {
         font-size: 1em;
         color: rgba(100, 100, 111, 0.4);
         margin: 0 1em;
-      }
-    
-    button{
-      padding: 1em;
-      background: #52a27e;
-      color: #fff;
-      border-radius: 2em;
-      border: none;
-      font-size: 1em;
-      cursor: pointer;
     }
 
     .full-input {
@@ -43,4 +34,16 @@ export const Container = styled.div`
         width: 100%;
         margin-bottom: 1em;
     }
+`
+export const StyledButton = styled(Button)`
+    padding: 1em;
+    background: #52a27e;
+    color: #fff;
+    border-radius: 2em;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    &:hover{
+      background: #03a353;
+    } 
 `

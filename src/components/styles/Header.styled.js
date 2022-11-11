@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledHeader = styled.header`
     background-color: #fff;
-    font-size: 12px;
+    font-size: 1em;
     font-weight: 500;
     display: flex;
     justify-content: start;
@@ -10,7 +10,7 @@ export const StyledHeader = styled.header`
     flex-direction: row;
     width: 100%;
 
-    h1 {
+    h3 {
         margin-left: 1em;
     }
 `

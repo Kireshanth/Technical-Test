@@ -46,7 +46,7 @@ export const StyledUserList = styled.div`
         display: inline;
     }
 
-    .user-table thead th{
+    .user-table thead tr th{
         width: 50%;
         padding: 1em;
     }
@@ -66,7 +66,8 @@ export const StyledUserList = styled.div`
 `
 
 export const StyledUser = styled.tr`
-    border-bottom: 2px solid #f4f6f8;
+    border-bottom: 3px solid #f4f6f8;
+
     &:last-child {
         border: none;
     }
@@ -80,5 +81,6 @@ export const StyledUser = styled.tr`
     }
     td {
         padding: 1em;
+        vertical-align: baseline;
     }
 `

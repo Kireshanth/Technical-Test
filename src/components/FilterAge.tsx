@@ -2,9 +2,15 @@ import React from 'react';
 import { StyledButton, Container } from './styles/FilterAge.styled'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const FilterAge = ( {getUsers, setMinAge, setMaxAge} ) => {
+interface FilterUsers {
+    getUsers: () => Promise<void>;
+    setMinAge: (num: number) => void;
+    setMaxAge: (num: number) => void;
+}
+
+const FilterAge = ( {getUsers, setMinAge, setMaxAge}: FilterUsers ) => {
     
-    const updateAge = e => {
+    const updateAge = (e: any) => {
         if(e.target.name == "minAge"){
             if(e.target.value == ""){
                 setMinAge(0)
@@ -26,11 +32,11 @@ const FilterAge = ( {getUsers, setMinAge, setMaxAge} ) => {
             <Container>
             <div>
                 <div className='full-input'>
-                    <label for="minAge">Min</label>
+                    <label htmlFor="minAge">Min</label>
                     <input name="minAge" onChange={updateAge} min={0} step="1" max={100} type="number" />
                 </div>
                 <div className='full-input'>
-                    <label for="maxAge">Max</label>
+                    <label htmlFor="maxAge">Max</label>
                     <input name="maxAge" onChange={updateAge} min={0} step="1" max={120} type="number" />
                 </div>
             </div>
